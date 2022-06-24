@@ -17,6 +17,25 @@ app.get('/api/users', async(req,res,next)=>{
     }
 });
 
+app.get('/api/laptops', async(req,res,next)=> {
+
+    try{
+        res.status(200).send( await Laptop.findAll())
+        } catch(er) {
+            next(er);
+        }
+
+    // try{
+
+    //     const userLaptops = await Laptop.findAll( { include: User,
+    //         where: { userId: req.params.userId }});
+    //         res.status(200).send(userLaptops);
+
+    // } catch(er) {
+    //     next(er);
+    // }
+})
+
 const port = process.env.PORT || 3400;
 
 const init = () => {
